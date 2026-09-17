@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demandas actuales y transformación del currículo</title>
+<style>
+:root{
+  --bg:#f5f7fb; --card:#fff; --text:#172033; --muted:#5d687a;
+  --accent:#3157d5; --accent2:#e9edff; --border:#dce2ec;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.container{max-width:1050px;margin:auto;padding:28px}
+header{background:linear-gradient(135deg,#1d326f,#3157d5);color:white;border-radius:22px;padding:30px;margin-bottom:20px}
+header .tag{font-size:13px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;opacity:.9}
+h1{font-size:34px;line-height:1.15;margin:8px 0}
+header p{max-width:850px;margin:0;opacity:.92}
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;margin:20px 0}
+.flow-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:17px}
+.flow-card strong{display:block;font-size:16px;margin-bottom:5px}
+.flow-card span{font-size:13px;color:var(--muted)}
+.arrow{display:flex;align-items:center;font-size:25px;color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+button{
+  border:1px solid var(--border);background:white;color:var(--text);border-radius:14px;
+  padding:15px;text-align:left;cursor:pointer;min-height:86px;font:inherit;
+}
+button:hover{border-color:var(--accent);transform:translateY(-1px)}
+button.active{border:2px solid var(--accent);background:var(--accent2)}
+.num{font-size:12px;font-weight:bold;color:var(--accent)}
+.title{display:block;font-weight:bold;margin-top:4px}
+.panel{background:white;border:1px solid var(--border);border-radius:20px;padding:22px}
+.panel-head{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:15px}
+.panel h2{margin:0;font-size:24px}
+.badge{background:var(--accent2);color:var(--accent);font-size:12px;font-weight:bold;padding:7px 10px;border-radius:99px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.mini{background:#fafbfe;border:1px solid var(--border);border-radius:14px;padding:15px}
+.mini h3{font-size:12px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin:0 0 7px}
+.mini p{margin:0;font-size:14px}
+.application{margin-top:14px;padding:15px;background:var(--accent2);border-left:5px solid var(--accent);border-radius:10px;font-size:14px}
+.sources{margin-top:18px;background:white;border:1px solid var(--border);border-radius:16px;padding:18px}
+.sources h3{margin-top:0}
+.sources a{color:var(--accent);text-decoration:none}
+.sources a:hover{text-decoration:underline}
+footer{font-size:12px;color:var(--muted);margin-top:18px}
+@media(max-width:760px){
+ .flow{grid-template-columns:1fr}.arrow{justify-content:center;transform:rotate(90deg)}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .cols{grid-template-columns:1fr}
+}
+@media(max-width:430px){.grid{grid-template-columns:1fr}h1{font-size:27px}.container{padding:15px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <div class="tag">Infografía interactiva · Currículo y sociedad</div>
+  <h1>De las demandas actuales a un nuevo perfil de egreso</h1>
+  <p>Las transformaciones sociales, culturales y tecnológicas exigen que el currículo desarrolle capacidades para participar, convivir, aprender y actuar responsablemente en contextos diversos y digitales.</p>
+</header>
+
+<section class="flow">
+  <div class="flow-card"><strong>1 · Demandas actuales</strong><span>Brecha digital · inclusión · equidad · diversidad · IA · convivencia</span></div>
+  <div class="arrow">→</div>
+  <div class="flow-card"><strong>2 · Transformación curricular</strong><span>Contenidos pertinentes, contextualizados, accesibles e interdisciplinarios</span></div>
+  <div class="arrow">→</div>
+  <div class="flow-card"><strong>3 · Perfil de egreso</strong><span>Estudiantes críticos, inclusivos, digitales, participativos y capaces de aprender continuamente</span></div>
+</section>
+
+<div class="grid" id="buttons"></div>
+
+<section class="panel" aria-live="polite">
+  <div class="panel-head">
+    <div><div class="num" id="num"></div><h2 id="mainTitle"></h2></div>
+    <div class="badge" id="badge"></div>
+  </div>
+  <div class="cols">
+    <div class="mini"><h3>¿Qué demanda?</h3><p id="demand"></p></div>
+    <div class="mini"><h3>Impacto en el perfil de egreso</h3><p id="profile"></p></div>
+    <div class="mini"><h3>¿Qué debe cambiar en los contenidos?</h3><p id="content"></p></div>
+  </div>
+  <div class="application"><strong>Aplicación en el aula:</strong> <span id="classroom"></span></div>
+</section>
+
+<section class="sources">
+  <h3>Fuentes de consulta</h3>
+  <ul>
+    <li><a href="https://www.unesco.org/es/articles/informe-de-seguimiento-de-la-educacion-en-el-mundo-2023-tecnologia-en-la-educacion-una-herramienta" target="_blank">UNESCO – Tecnología en la educación</a></li>
+    <li><a href="https://www.oecd.org/en/publications/equity-and-inclusion-in-education_e9072e21-en.html" target="_blank">OCDE – Equity and Inclusion in Education</a></li>
+    <li><a href="https://www.oecd.org/en/publications/digital-equity-and-inclusion-in-education_7cb15030-en.html" target="_blank">OCDE – Digital Equity and Inclusion in Education</a></li>
+    <li><a href="https://www.unicef.org/digitaleducation/reports/unicef-digital-education-strategy-2025-2030" target="_blank">UNICEF – Digital Education Strategy 2025–2030</a></li>
+  </ul>
+</section>
+
+<footer>
+  Elaboración académica basada en literatura y documentos institucionales sobre equidad, inclusión, diversidad y transformación digital educativa.
+  <br>La maestra puede abrir este archivo en un navegador y modificar el texto, estilos o contenidos directamente en el código HTML.
+</footer>
+</div>
+
+<script>
+const data = {
+digital:{n:"01 · DEMANDA",title:"Brecha digital",badge:"Acceso + oportunidades",
+demand:"El acceso desigual a internet, dispositivos, conectividad y habilidades digitales puede generar nuevas desigualdades educativas.",
+profile:"Utiliza recursos digitales de manera responsable y sabe adaptarse a diferentes condiciones tecnológicas para continuar aprendiendo.",
+content:"Alfabetización digital, ciudadanía digital, búsqueda y evaluación de información, seguridad en línea y alternativas para aprender con y sin conectividad.",
+classroom:"Diseñar una actividad con versión digital y alternativa sin conexión, enseñando además cómo evaluar la confiabilidad de una fuente."},
+inclusion:{n:"02 · DEMANDA",title:"Inclusión",badge:"Participación + aprendizaje",
+demand:"La escuela debe reducir las barreras que dificultan el acceso, la participación y el aprendizaje de estudiantes con distintas necesidades y capacidades.",
+profile:"Reconoce la diversidad de capacidades y participa en ambientes donde se respetan los derechos, las diferencias y las distintas formas de aprender.",
+content:"Accesibilidad, actividades flexibles, múltiples formas de expresión y estrategias para identificar y disminuir barreras de aprendizaje.",
+classroom:"Ofrecer distintas maneras de demostrar lo aprendido: texto, exposición, esquema, audio, proyecto o producto visual."},
+equity:{n:"03 · DEMANDA",title:"Equidad",badge:"Oportunidades reales",
+demand:"Los estudiantes parten de condiciones diferentes; proporcionar exactamente lo mismo no siempre garantiza oportunidades equivalentes.",
+profile:"Comprende las desigualdades de su entorno y participa en acciones orientadas a la justicia, la solidaridad y la igualdad de oportunidades.",
+content:"Desigualdad social, derechos, justicia, acceso a recursos, problemáticas comunitarias y análisis de situaciones desde diferentes perspectivas.",
+classroom:"Analizar un problema de la comunidad identificando quiénes enfrentan mayores barreras y qué apoyos podrían reducirlas."},
+diversity:{n:"04 · DEMANDA",title:"Diversidad cultural",badge:"Identidad + respeto",
+demand:"La pluralidad cultural y lingüística requiere que el currículo reconozca diferentes conocimientos, historias, identidades y formas de interpretar el mundo.",
+profile:"Valora la diversidad cultural y lingüística, dialoga con personas que tienen perspectivas diferentes y reconoce los saberes de su comunidad.",
+content:"Culturas y lenguas originarias, historia local, saberes comunitarios, interculturalidad, identidad y análisis de distintas perspectivas.",
+classroom:"Incorporar testimonios, conocimientos o problemáticas de la comunidad y contrastarlos con otras perspectivas."},
+ai:{n:"05 · DEMANDA",title:"Tecnología e IA",badge:"Uso crítico + ético",
+demand:"La inteligencia artificial transforma las formas de buscar información, producir contenidos y resolver problemas, creando nuevas necesidades de aprendizaje.",
+profile:"Utiliza tecnologías e IA de manera crítica, ética y responsable, verificando información y reconociendo sus limitaciones.",
+content:"Alfabetización en IA, verificación de información, privacidad, sesgos, autoría, ética digital y uso responsable de herramientas tecnológicas.",
+classroom:"Comparar una respuesta generada por una herramienta digital con fuentes confiables e identificar aciertos, errores y posibles sesgos."},
+skills:{n:"06 · DEMANDA",title:"Competencias digitales",badge:"Pensamiento crítico",
+demand:"Saber usar un dispositivo no es suficiente: se necesitan capacidades para buscar, seleccionar, crear, comunicar y proteger información.",
+profile:"Resuelve problemas, comunica ideas y aprende utilizando herramientas digitales de forma segura, crítica, creativa y responsable.",
+content:"Pensamiento computacional, comunicación digital, producción multimedia, alfabetización informacional, seguridad y ciudadanía digital.",
+classroom:"Plantear una investigación donde el estudiante deba localizar, contrastar, seleccionar y comunicar información de distintas fuentes."},
+coexistence:{n:"07 · DEMANDA",title:"Convivencia y participación",badge:"Democracia + diálogo",
+demand:"La escuela necesita formar personas capaces de dialogar, colaborar, participar y resolver conflictos de manera pacífica.",
+profile:"Participa responsablemente en su comunidad, argumenta sus ideas, escucha otras perspectivas y contribuye a una convivencia respetuosa.",
+content:"Cultura de paz, derechos humanos, participación ciudadana, democracia, diálogo, resolución de conflictos y proyectos comunitarios.",
+classroom:"Resolver un problema escolar mediante diálogo, acuerdos y participación de los integrantes del grupo."},
+teachers:{n:"08 · DEMANDA",title:"Formación docente",badge:"Actualización permanente",
+demand:"Los cambios sociales y tecnológicos requieren docentes capaces de adaptar estrategias, recursos y formas de evaluación a contextos diversos.",
+profile:"Aprende de manera permanente y desarrolla autonomía para enfrentar situaciones nuevas, colaborar y utilizar conocimientos de distintas áreas.",
+content:"Aprendizaje permanente, investigación, pensamiento crítico, trabajo colaborativo, innovación pedagógica y uso reflexivo de tecnologías.",
+classroom:"Diseñar una secuencia donde el docente sea mediador y los estudiantes investiguen, colaboren, creen y reflexionen sobre su proceso."}
+};
+
+const labels = [
+  ["digital","Brecha digital"],["inclusion","Inclusión"],["equity","Equidad"],["diversity","Diversidad cultural"],
+  ["ai","Tecnología e IA"],["skills","Competencias digitales"],["coexistence","Convivencia y participación"],["teachers","Formación docente"]
+];
+
+const buttons=document.getElementById("buttons");
+labels.forEach(([key,label],i)=>{
+  const b=document.createElement("button");
+  b.innerHTML=`<span class="num">0${i+1}</span><span class="title">${label}</span>`;
+  b.onclick=()=>render(key,b);
+  buttons.appendChild(b);
+});
+
+function render(key,clicked){
+  const x=data[key];
+  document.getElementById("num").textContent=x.n;
+  document.getElementById("mainTitle").textContent=x.title;
+  document.getElementById("badge").textContent=x.badge;
+  document.getElementById("demand").textContent=x.demand;
+  document.getElementById("profile").textContent=x.profile;
+  document.getElementById("content").textContent=x.content;
+  document.getElementById("classroom").textContent=x.classroom;
+  document.querySelectorAll("#buttons button").forEach(b=>b.classList.remove("active"));
+  if(clicked) clicked.classList.add("active");
+}
+render("digital",buttons.children[0]);
+</script>
+</body>
+</html>
